@@ -19,21 +19,21 @@ createMovie = (req, res) => {
     });
   }
 
-  movie.save().then(() => {
-    return res
-      .status(201)
-      .json({
+  movie
+    .save()
+    .then(() => {
+      return res.status(201).json({
         success: true,
         id: movie._id,
         message: "Movie Created",
-      })
-      .catch((error) => {
-        return res.status(400).json({
-          error,
-          message: "Movie not created!",
-        });
       });
-  });
+    })
+    .catch((error) => {
+      return res.status(400).json({
+        error,
+        message: "Movie not created!",
+      });
+    });
 };
 
 updateMovie = async (req, res) => {
